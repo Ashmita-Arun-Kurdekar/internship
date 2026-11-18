@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "input_folder": "input",
+  "database": "data/medical_data.sqlite3",
+  "deduplication": {
+    "mode": "exact_within_document"
+  },
+  "fuzzy": {
+    "suggest": true,
+    "auto_assign": false,
+    "threshold": 0.94,
+    "margin": 0.08
+  },
+  "privacy": {
+    "mask_dashboard": false,
+    "token_fields": [
+      "patient_name",
+      "uhid",
+      "document_id"
+    ],
+    "salt_env": "MEDICAL_PII_SALT"
+  },
+  "monitoring": {
+    "error_rate_threshold": 0.01,
+    "lag_sla_seconds": 900,
+    "coverage_target": 0.98
+  },
+  "wide_tests": [
+    "HAEMOGLOBIN",
+    "WHITE BLOOD CELL COUNT",
+    "SODIUM",
+    "POTASSIUM",
+    "Platelet Count",
+    "ALANINE AMINOTRANSFERASE",
+    "ASPARTATE AMINOTRANSFERASE",
+    "C-REACTIVE PROTEIN",
+    "CREATININE",
+    "ALBUMIN",
+    "URIC ACID",
+    "Red Blood Cell Count (RBC)"
+  ],
+  "allow_document_ranges": true
+}

@@ -1,0 +1,226 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "test": "HAEMOGLOBIN",
+      "canonical": "g/dL",
+      "aliases": [
+        "g/dL",
+        "gm/dL",
+        "gm/dl",
+        "g/dl"
+      ],
+      "factor": 1,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    },
+    {
+      "test": "HAEMOGLOBIN",
+      "canonical": "g/dL",
+      "aliases": [
+        "g/L"
+      ],
+      "factor": 0.1,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    },
+    {
+      "test": "HEMOGLOBIN",
+      "canonical": "g/dL",
+      "aliases": [
+        "g/dL",
+        "gm/dL",
+        "gm/dl",
+        "g/dl"
+      ],
+      "factor": 1,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    },
+    {
+      "test": "HEMOGLOBIN",
+      "canonical": "g/dL",
+      "aliases": [
+        "g/L"
+      ],
+      "factor": 0.1,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    },
+    {
+      "test": "SODIUM",
+      "canonical": "mmol/L",
+      "aliases": [
+        "mmol/L",
+        "mmol/l",
+        "mEq/L"
+      ],
+      "factor": 1,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    },
+    {
+      "test": "POTASSIUM",
+      "canonical": "mmol/L",
+      "aliases": [
+        "mmol/L",
+        "mmol/l",
+        "mEq/L"
+      ],
+      "factor": 1,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    },
+    {
+      "test": "Platelet Count",
+      "canonical": "10^9/L",
+      "aliases": [
+        "cells/cu.mm",
+        "cell/cu.mm",
+        "cells/cumm",
+        "cells/uL"
+      ],
+      "factor": 0.001,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    },
+    {
+      "test": "Platelet Count",
+      "canonical": "10^9/L",
+      "aliases": [
+        "10^9/L"
+      ],
+      "factor": 1,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    },
+    {
+      "test": "WHITE BLOOD CELL COUNT",
+      "canonical": "10^9/L",
+      "aliases": [
+        "cells/cu.mm",
+        "cell/cu.mm",
+        "cells/cumm",
+        "cells/uL"
+      ],
+      "factor": 0.001,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    },
+    {
+      "test": "WHITE BLOOD CELL COUNT",
+      "canonical": "10^9/L",
+      "aliases": [
+        "10^9/L"
+      ],
+      "factor": 1,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    },
+    {
+      "test": "Red Blood Cell Count (RBC)",
+      "canonical": "10^12/L",
+      "aliases": [
+        "mil/cu.mm",
+        "million/uL"
+      ],
+      "factor": 1,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    },
+    {
+      "test": "Red Blood Cell Count (RBC)",
+      "canonical": "10^12/L",
+      "aliases": [
+        "mil/cu.cm"
+      ],
+      "factor": 0.001,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    },
+    {
+      "test": "ALANINE AMINOTRANSFERASE",
+      "canonical": "U/L",
+      "aliases": [
+        "U/L",
+        "IU/L"
+      ],
+      "factor": 1,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    },
+    {
+      "test": "ASPARTATE AMINOTRANSFERASE",
+      "canonical": "U/L",
+      "aliases": [
+        "U/L",
+        "IU/L"
+      ],
+      "factor": 1,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    },
+    {
+      "test": "Serum Creatinine",
+      "canonical": "mg/dL",
+      "aliases": [
+        "mg/dL",
+        "mg/dl"
+      ],
+      "factor": 1,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    },
+    {
+      "test": "CREATININE",
+      "canonical": "mg/dL",
+      "aliases": [
+        "mg/dL",
+        "mg/dl"
+      ],
+      "factor": 1,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    },
+    {
+      "test": "URIC ACID",
+      "canonical": "mg/dL",
+      "aliases": [
+        "mg/dL",
+        "mg/dl"
+      ],
+      "factor": 1,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    },
+    {
+      "test": "ALBUMIN",
+      "canonical": "g/dL",
+      "aliases": [
+        "g/dL",
+        "gm/dL"
+      ],
+      "factor": 1,
+      "offset": 0,
+      "source": "https://www.bipm.org/en/publications/si-brochure",
+      "note": "Explicit dimensional rule. mil means million cells only in the RBC rules; never milli."
+    }
+  ]
+}

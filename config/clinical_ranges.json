@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "note": "Prototype reference rules, not clinical approval. Context required. Source ranges remain separate evidence. Outlier envelope is an operational plausibility screen, not a diagnostic cutoff.",
+  "rules": [
+    {
+      "id": "adult-hb-male-HAEMOGLOBIN",
+      "test": "HAEMOGLOBIN",
+      "unit": "g/dL",
+      "age_min": 18,
+      "gender": "Male",
+      "low": 13.8,
+      "high": 17.2,
+      "plausible_low": 1,
+      "plausible_high": 30,
+      "outlier_basis": "Prototype conservative review envelope; not a medical reference interval.",
+      "source": "https://medlineplus.gov/ency/article/003645.htm"
+    },
+    {
+      "id": "adult-hb-male-HEMOGLOBIN",
+      "test": "HEMOGLOBIN",
+      "unit": "g/dL",
+      "age_min": 18,
+      "gender": "Male",
+      "low": 13.8,
+      "high": 17.2,
+      "plausible_low": 1,
+      "plausible_high": 30,
+      "outlier_basis": "Prototype conservative review envelope; not a medical reference interval.",
+      "source": "https://medlineplus.gov/ency/article/003645.htm"
+    },
+    {
+      "id": "adult-hb-female-HAEMOGLOBIN",
+      "test": "HAEMOGLOBIN",
+      "unit": "g/dL",
+      "age_min": 18,
+      "gender": "Female",
+      "low": 12.1,
+      "high": 15.1,
+      "plausible_low": 1,
+      "plausible_high": 30,
+      "outlier_basis": "Prototype conservative review envelope; not a medical reference interval.",
+      "source": "https://medlineplus.gov/ency/article/003645.htm"
+    },
+    {
+      "id": "adult-hb-female-HEMOGLOBIN",
+      "test": "HEMOGLOBIN",
+      "unit": "g/dL",
+      "age_min": 18,
+      "gender": "Female",
+      "low": 12.1,
+      "high": 15.1,
+      "plausible_low": 1,
+      "plausible_high": 30,
+      "outlier_basis": "Prototype conservative review envelope; not a medical reference interval.",
+      "source": "https://medlineplus.gov/ency/article/003645.htm"
+    },
+    {
+      "id": "adult-sodium",
+      "test": "SODIUM",
+      "unit": "mmol/L",
+      "age_min": 18,
+      "low": 135,
+      "high": 145,
+      "plausible_low": 50,
+      "plausible_high": 250,
+      "outlier_basis": "Prototype gross plausibility review envelope; not clinical critical values.",
+      "source": "https://www.ashp.org/-/media/store-files/p5488-sample-chapter-12.pdf"
+    }
+  ]
+}

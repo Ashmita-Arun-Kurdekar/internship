@@ -1,0 +1,12 @@
+{
+    "version":  2,
+    "aliases":  [
+                    {
+                        "name":  "aemoglobin",
+                        "canonical":  "HAEMOGLOBIN",
+                        "approved":  true,
+                        "source":  "Assignment.docx, FR-2.1"
+                    }
+                ],
+    "note":  "Add reviewed non-conflicting aliases only. The XLSX remains authoritative; ambiguous keys cannot be overridden here."
+}

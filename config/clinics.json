@@ -1,0 +1,154 @@
+{
+  "profiles": [
+    {
+      "id": "legacy_v1",
+      "detect": "data.responseDetails",
+      "sections": "data.responseDetails",
+      "classifier": "classifier",
+      "payload": "data",
+      "envelope": {
+        "traceId": "traceId",
+        "documentId": "data.documentId",
+        "correlationId": "data.correlationId",
+        "metaDetails": "data.metaDetails"
+      },
+      "classifiers": {
+        "lab_report": "lab_report",
+        "discharge_summary": "discharge_summary"
+      },
+      "lab": {
+        "fields": {
+          "patient_name": "basic_info.patient_name",
+          "age": "basic_info.age",
+          "gender": "basic_info.gender",
+          "uhid": "basic_info.uhid",
+          "bill_date": "basic_info.bill_date",
+          "reports_date": "basic_info.reports_date",
+          "lab_or_hospital_name": "basic_info.lab_or_hospital_name",
+          "doctor_name": "basic_info.doctor_name"
+        },
+        "children": "report_details",
+        "child_fields": {
+          "test_name": "test_name",
+          "result": "result",
+          "range": "range",
+          "unit": "unit",
+          "page_no": "page_no",
+          "test_analytics": "test_analytics"
+        }
+      },
+      "discharge": {
+        "fields": {
+          "admissionDate": "admissionDate",
+          "dischargeDate": "dischargeDate",
+          "patientName": "patientName",
+          "age": "age",
+          "gender": "gender",
+          "doctorName": "doctorName",
+          "hospitalName": "hospitalName",
+          "hospitalAddress": "hospitalAddress",
+          "diagnosis": "diagnosis",
+          "briefHistory": "briefHistory",
+          "generalExaminations": "generalExaminations",
+          "recommendations": "recommendations",
+          "ward": "ward",
+          "postDischargeAdvice": "postDischargeAdvice",
+          "medicineInjectionsInvestigation": "medicineInjectionsInvestigation",
+          "courseDuringHospitalisation": "courseDuringHospitalisation"
+        },
+        "children": "dischargeMedications",
+        "child_fields": {
+          "medicine": "medicine",
+          "dose": "dose",
+          "frequency": "frequency",
+          "type": "type"
+        }
+      }
+    },
+    {
+      "id": "flat_v1",
+      "detect": "reports",
+      "sections": "reports",
+      "classifier": "kind",
+      "payload": "$",
+      "envelope": {
+        "traceId": "request_id",
+        "documentId": "document_id",
+        "correlationId": "correlation_id"
+      },
+      "classifiers": {
+        "laboratory": "lab_report",
+        "discharge": "discharge_summary"
+      },
+      "lab": {
+        "fields": {
+          "patient_name": "$root.patient.name",
+          "age": "$root.patient.age",
+          "gender": "$root.patient.sex",
+          "lab_or_hospital_name": "$root.clinic.name",
+          "reports_date": "date"
+        },
+        "children": "observations",
+        "child_fields": {
+          "test_name": "name",
+          "result": "value",
+          "unit": "units",
+          "range": "reference",
+          "page_no": "page",
+          "test_analytics": "comment"
+        }
+      },
+      "discharge": {
+        "fields": {
+          "patientName": "$root.patient.name",
+          "age": "$root.patient.age",
+          "gender": "$root.patient.sex",
+          "hospitalName": "$root.clinic.name",
+          "diagnosis": "diagnosis",
+          "admissionDate": "admitted",
+          "dischargeDate": "discharged"
+        },
+        "children": "medicines",
+        "child_fields": {
+          "medicine": "brand",
+          "dose": "dose",
+          "frequency": "schedule",
+          "type": "form"
+        }
+      }
+    }
+  ],
+  "clinics": [
+    {
+      "file_pattern": "Sample_JSON_file1.json",
+      "clinic_id": "sample-source-1",
+      "label": "Sample source 1 (simulated clinic ID)",
+      "profile": "legacy_v1"
+    },
+    {
+      "file_pattern": "Sample_JSON_file2.json",
+      "clinic_id": "sample-source-2",
+      "label": "Sample source 2 (simulated clinic ID)",
+      "profile": "legacy_v1"
+    },
+    {
+      "file_pattern": "Sample_JSON_file3.json",
+      "clinic_id": "sample-source-3",
+      "label": "Sample source 3 (simulated clinic ID)",
+      "profile": "legacy_v1"
+    },
+    {
+      "file_pattern": "Sample_JSON_file4.json",
+      "clinic_id": "sample-source-4",
+      "label": "Sample source 4 (simulated clinic ID)",
+      "profile": "legacy_v1"
+    },
+    {
+      "file_pattern": "Sample_JSON_file5.json",
+      "clinic_id": "sample-source-5",
+      "label": "Sample source 5 (simulated clinic ID)",
+      "profile": "legacy_v1"
+    }
+  ],
+  "default_clinic_id": null
+}

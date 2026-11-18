@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "aliases": [
+        "TAB DOLO 650",
+        "TAB. DOLO - 650 mg",
+        "TAB. DOLO - 650 mg(in case of fever)",
+        "DOLO-650",
+        "DOLO 650"
+      ],
+      "generic": "PARACETAMOL",
+      "strength": "650 mg",
+      "source": "https://rb.indianrailways.gov.in/public/ourOrganization/public/pdf/Micro%20Labs%20Ltd_f6c76dd6_1761620046441.pdf",
+      "method": "exact_curated_brand_reference"
+    }
+  ]
+}
