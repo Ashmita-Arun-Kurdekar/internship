@@ -4,9 +4,7 @@ services:
     runtime: python
     plan: free
     buildCommand: python -m pip install -r requirements.txt
-    startCommand: python -m src.main && python -m src.webapp
+    startCommand: python -m src.public_demo
     envVars:
       - key: PYTHON_VERSION
         value: "3.12.11"
-      - key: DASHBOARD_DEMO_PASSWORD
-        generateValue: true
