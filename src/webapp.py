@@ -1,8 +1,10 @@
 """Local dashboard. Run: python -m src.webapp (binds only to loopback)."""
 import argparse
+import base64
 import csv
 import json
 import logging
+import os
 import secrets
 import subprocess
 import sys
@@ -168,7 +170,13 @@ class DashboardState:
             return {"record": record, "provenance": provenance,"decisions":decisions}
 
 
-def make_handler(state):
+def make_handler(state, external_url=None, demo_password=None):
+    external_host = urlsplit(external_url).netloc if external_url else None
+    demo_auth = (
+        "Basic " + base64.b64encode(f"reviewer:{demo_password}".encode()).decode()
+        if demo_password else None
+    )
+
     class Handler(BaseHTTPRequestHandler):
         def send(self, status, body, content_type="application/json; charset=utf-8", filename=None):
             if not isinstance(body, bytes):
@@ -190,12 +198,28 @@ def make_handler(state):
 
 
         def allowed_host(self):
+            if external_host:
+                return self.headers.get("Host", "").lower() == external_host.lower()
             host = urlsplit("http://" + self.headers.get("Host", "")).hostname
             return host in {"localhost", "127.0.0.1"}
 
+        def authorized(self):
+            if demo_auth is None or secrets.compare_digest(
+                self.headers.get("Authorization", "").encode(), demo_auth.encode()
+            ):
+                return True
+            self.send_response(401)
+            self.send_header("WWW-Authenticate", 'Basic realm="Veritas Claims Demo"')
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return False
+
         def do_GET(self):
             if not self.allowed_host():
-                return self.send(403, {"error": "Local host required"})
+                return self.send(403, {"error": "Unexpected dashboard host"})
+            if not self.authorized():
+                return
             parsed = urlsplit(self.path)
             try:
                 if parsed.path == "/api/session":
@@ -233,7 +257,9 @@ def make_handler(state):
 
         def do_POST(self):
             origin = self.headers.get("Origin")
-            expected_origin = "http://" + self.headers.get("Host", "")
+            expected_origin = external_url or "http://" + self.headers.get("Host", "")
+            if self.allowed_host() and not self.authorized():
+                return
             if not self.allowed_host() or (origin and origin != expected_origin) or not secrets.compare_digest(self.headers.get("X-Dashboard-Token", ""), state.token):
                 return self.send(403, {"error": "Refresh the dashboard before running the pipeline"})
             if self.path == "/api/review":
@@ -264,15 +290,22 @@ def make_handler(state):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", type=Path, default=BASE)
-    parser.add_argument("--port", type=int, default=8000)
+    external_url = os.environ.get("RENDER_EXTERNAL_URL", "").rstrip("/")
+    demo_password = os.environ.get("DASHBOARD_DEMO_PASSWORD")
+    if external_url and (urlsplit(external_url).scheme != "https" or not demo_password):
+        parser.error("Hosted mode requires an HTTPS URL and DASHBOARD_DEMO_PASSWORD")
+    parser.add_argument("--port", type=int, default=os.environ.get("PORT", "8000") if external_url else 8000)
     parser.add_argument("--open-browser", action="store_true")
     args = parser.parse_args()
-    server = ThreadingHTTPServer(("127.0.0.1", args.port), make_handler(DashboardState(args.base)))
-    print(f"Medical data dashboard: http://localhost:{server.server_port}", flush=True)
+    bind_host = "0.0.0.0" if external_url else "127.0.0.1"
+    handler = make_handler(DashboardState(args.base), external_url or None, demo_password if external_url else None)
+    server = ThreadingHTTPServer((bind_host, args.port), handler)
+    dashboard_url = external_url or f"http://localhost:{server.server_port}"
+    print(f"Medical data dashboard: {dashboard_url}", flush=True)
     print("Press Ctrl+C to stop.", flush=True)
     if args.open_browser:
         import webbrowser
-        threading.Timer(0.5, lambda: webbrowser.open(f"http://localhost:{server.server_port}")).start()
+        threading.Timer(0.5, lambda: webbrowser.open(dashboard_url)).start()
     try:
         server.serve_forever()
     except KeyboardInterrupt:
